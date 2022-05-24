@@ -11,11 +11,11 @@ export const HangmanGame = () => {
     }
 
     // Initialises global variables to set masterWord as word input and 
-    // sets tempWordState to all asterisks.
+    // sets tempWordState to all underscores.
     const initialise = (word) => {
         masterWord = word;
         for (let i = 0; i < word.length; ++i) {
-            tempWordState += "*";
+            tempWordState += "_";
         }
     }
 
