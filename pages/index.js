@@ -16,9 +16,6 @@ const BoxDiv = styled.div`
     transform: translate(-50%, -50%);
 `;
 
-
-
-
 export default function Home() {
   const [uiState, setUIState] = useState(INITIAL_STATE);
   var renderUi = <></>;

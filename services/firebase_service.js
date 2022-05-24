@@ -1,13 +1,13 @@
 import { getDatabase, ref, onValue, set, push } from "firebase/database";
 
-export const getRoom = (roomID) => {
+export const getRoom = async (roomID) => {
     const db = getDatabase();
     const roomRef = ref(db, 'rooms/' + roomID);
-    onValue(roomRef, (snapshot) => {
+    await onValue(roomRef, (snapshot) => {
         if(snapshot.exists()){
-            console.log("exist")
+            return "exist";
         } else {
-            console.log("no exist")
+            return "no exist";
         }
     });
 }
