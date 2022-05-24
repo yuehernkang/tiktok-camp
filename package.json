@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
     "@mui/material": "^5.8.1",
     "@mui/styled-engine-sc": "^5.8.0",
     "firebase": "^9.8.1",
