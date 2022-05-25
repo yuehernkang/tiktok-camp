@@ -1,5 +1,4 @@
 export const HangmanGame = () => { 
-    return (<> </>);
     let masterWord;
     let tempWordState;
 
@@ -28,4 +27,6 @@ export const HangmanGame = () => {
         }
         return tempWordState;
     }
+
+    return (<> </>);
 }
