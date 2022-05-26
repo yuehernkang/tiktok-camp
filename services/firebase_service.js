@@ -12,6 +12,14 @@ export const getRoom = async (roomID) => {
     });
 }
 
+export const createRoom = async () => {
+    const generateRoomID = Math.random().toString(36).slice(2, 6);
+    const db = getDatabase();
+    set(ref(db, 'rooms/' + generateRoomID), {
+        players: "john"
+    })
+}
+
 export const addPlayer = (roomID, playerName) => {
     const db = getDatabase();
     const roomRef = ref(db, 'rooms/' + roomID);

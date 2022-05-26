@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import {LobbyScreen} from './states/lobby_screen';
 import { LoginScreen } from './states/login_screen';
 import { InitialScreen } from './states/initial_screen';
-import { INITIAL_STATE, LOBBY_SCREEN_STATE, LOGIN_SCREEN_STATE } from './states/states';
+import { ENTER_ROOM_STATE, INITIAL_STATE, LOBBY_SCREEN_STATE, LOGIN_SCREEN_STATE } from './states/states';
+import {EnterRoomScreen} from './states/enter_room_screen';
 
 
 const BoxDiv = styled.div`
@@ -28,6 +29,8 @@ export default function Home() {
       break;
     case LOBBY_SCREEN_STATE:
       renderUi = <LobbyScreen state={uiState} onStateChange={setUIState}/>
+    case ENTER_ROOM_STATE: 
+      renderUi = <EnterRoomScreen state={uiState} onStateChange={setUIState}/>
   }
 
   return (
