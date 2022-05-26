@@ -6,16 +6,14 @@ import { getDatabase, onDisconnect,ref } from 'firebase/database';
 //1. Add player to the room in Firebase Database
 //2. Give player default state of NOT READY
 //3. 
-
-
 export const LobbyScreen = (roomID) => {
     useEffect(() => {
-        addPlayer("U3Hg", "John");
-        loadPlayers("U3Hg")
+        addPlayer(roomID, "John");
+        loadPlayers(roomID)
     })
 
     const db = getDatabase();
-    const presenceRef = ref(db, "rooms/"+ "U3Hg");
+    const presenceRef = ref(db, "rooms/" + roomID);
     //onDisconnect()
     //When player crash, offline, close browser, refresh page
     //it will delete the data from 
