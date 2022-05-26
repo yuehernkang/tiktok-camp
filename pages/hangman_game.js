@@ -1,31 +1,28 @@
-export const HangmanGame = () => { 
-    return (<> </>);
-    let masterWord;
-    let tempWordState;
+export const HangmanGame = () => {
+    // masterWord used for debugging purposes
+    const masterWord = "APPLE";
 
-    // Simple function to replace char at that index with the new char input.
-    String.prototype.replaceCharAt = function(idx, char) {
-        return this.substring(0, idx)
-            + char
-            + this.substring(idx + char.length);
-    }
-
-    // Initialises global variables to set masterWord as word input and 
-    // sets tempWordState to all underscores.
-    const initialise = (word) => {
-        masterWord = word;
-        for (let i = 0; i < word.length; ++i) {
-            tempWordState += "_";
-        }
-    }
-
-    // Updates tempWordState according to the letter input guessed by the user.
-    const userGuess = (letter) => {
-        for (let i = 0; i < masterWord.length; ++i) {
-            if (letter == masterWord.charAt(i)) {
-                tempWordState.replaceCharAt(i, letter);
+    const userGuess = (currWordState, letter) => {
+        let result = "";
+    
+        // If player makes a guess whereby the letter is not in the masterWord,
+        // simply return the current state of word. ie "A__L_" or "_PPLE"
+        if (!masterWord.includes(letter)) {
+            console.log("Wrong guess! Lose a life.");
+            return currWordState;
+        } else {
+            for (let i = 0; i < masterWord.length; ++i) {
+                if (letter == masterWord.charAt(i)) {
+                    if (letter == currWordState.charAt(i)) {
+                        console.log("Already guessed this letter!");
+                    }
+                    result += letter;
+                } else {
+                    result += currWordState.charAt(i);
+                }
             }
+            return result;
         }
-        return tempWordState;
     }
+    return (<> </>);
 }
