@@ -2,36 +2,46 @@ import styled from 'styled-components';
 import React, { useState } from 'react';
 import {LobbyScreen} from './states/lobby_screen';
 import { LoginScreen } from './states/login_screen';
-import { InitialScreen } from './states/initial_screen';
-import { ENTER_ROOM_STATE, INITIAL_STATE, LOBBY_SCREEN_STATE, LOGIN_SCREEN_STATE } from './states/states';
+import { CREATE_JOIN_ROOM, ENTER_NAME_SCREEN, ENTER_ROOM_STATE, HANGMAN_GAME_STATE, INITIAL_STATE, LOBBY_SCREEN_STATE, LOGIN_SCREEN_STATE } from './states/states';
 import {EnterRoomScreen} from './states/enter_room_screen';
+import { useSelector } from 'react-redux';
+import { CreateJoinRoom } from './states/create_join_room';
+import { EnterNameScreen } from './states/enter_name_screen';
+import { HangmanScreen } from './states/hangman_screen';
 
 
 const BoxDiv = styled.div`
-  height: 50%;
-  width: 50%;
-  position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+  display: grid;
 `;
 
 export default function Home() {
-  const [uiState, setUIState] = useState(INITIAL_STATE);
+  // const [uiState, setUIState] = useState(INITIAL_STATE);
+  const uiState = useSelector((state) => state.ui.value)
+  const name = useSelector((state) => state.name)
+  const useless = useSelector((state) => {console.log(state)})
   var renderUi = <></>;
   switch(uiState) {
     case INITIAL_STATE:
-      renderUi = <InitialScreen state={uiState} onStateChange={setUIState}/>;
+      renderUi = <EnterNameScreen/>
       break;
     case LOGIN_SCREEN_STATE:
-      renderUi = <LoginScreen state={uiState} onStateChange={setUIState}/>;
+      renderUi = <LoginScreen/>;
       break;
     case LOBBY_SCREEN_STATE:
-      renderUi = <LobbyScreen state={uiState} onStateChange={setUIState}/>
+      console.log(uiState);
+      renderUi = <LobbyScreen/>
+      break;
     case ENTER_ROOM_STATE: 
-      renderUi = <EnterRoomScreen state={uiState} onStateChange={setUIState}/>
-  }
+      renderUi = <EnterRoomScreen/>
+      break;
+    case CREATE_JOIN_ROOM:
+      renderUi = <CreateJoinRoom/>
+      break;  
+    case LOBBY_SCREEN_STATE:
+      renderUi = <LobbyScreen />
+    case HANGMAN_GAME_STATE:
+      renderUi = <HangmanScreen />
+    }
 
   return (
     <BoxDiv>

@@ -23,9 +23,8 @@ export const createRoom = async () => {
 export const addPlayer = (roomID, playerName) => {
     const db = getDatabase();
     const roomRef = ref(db, 'rooms/' + roomID);
-    const newPlayerRef = push(roomRef);
-    set(newPlayerRef, {
-        players: playerName
+    push(roomRef, {
+        "playerName": playerName
     });
 }
 
@@ -34,7 +33,7 @@ export const loadPlayers = (roomID) => {
     const roomRef = ref(db, 'rooms/' + roomID);
     onValue(roomRef, (snapshot) => {
         if(snapshot.exists()){
-            console.log(snapshot.toJSON())
+            return snapshot.toJSON();
         } else {
             console.log("no exist")
         }

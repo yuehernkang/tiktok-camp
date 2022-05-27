@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { INITIAL_STATE } from './states';
 
-export const EnterRoomScreen = ({state, onStateChange}) => {
+export const EnterRoomScreen = () => {
 
     const [inputValue, setinputValue] = useState();
 
@@ -12,7 +12,6 @@ export const EnterRoomScreen = ({state, onStateChange}) => {
             if(value == "exist") {
                 //Go to lobby of specified game
                 console.log("exist")
-                onStateChange(LOBBY_SCREEN_STATE);
             } else {
                 //Show modal or something
                 console.log("noexist")
@@ -35,7 +34,6 @@ export const EnterRoomScreen = ({state, onStateChange}) => {
     }
 
     const backButton = () => {
-        onStateChange(INITIAL_STATE);
     }
 
     return (
