@@ -6,7 +6,7 @@ const withTM = require('next-transpile-modules')([
     '@mui/icons-material', // If @mui/icons-material is being used
   ]);
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   styledComponents: true,
 }
 
