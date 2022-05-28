@@ -84,6 +84,10 @@ export const LobbyScreen = (roomID) => {
         )
     }
 
+    const ready = () => {
+        
+    }
+
     const listenChatRef = ref(db, "rooms/2vky/chat");
     onChildAdded(listenChatRef, (data) => {
         console.log(data);
@@ -108,6 +112,7 @@ export const LobbyScreen = (roomID) => {
             </UserBox>
             <StartButton onClick={onClick}>Start</StartButton>
             <Button onClick={sendMessage}>send</Button>
+            <Button onClick={ready}>Ready</Button>
         </LobbyScreenDiv>
     );
 }
