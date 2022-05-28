@@ -56,7 +56,7 @@ const createButtons = () => {
     document.getElementById("keyboardRow3").innerHTML = thirdRowKeyboard;
 }
 
-// Updates 
+// Updates the current word status.
 const updateWordStatus = () => {
     currWordStatus = masterWord.split("").map(char => 
         guessedLetters.includes(char)
@@ -65,6 +65,7 @@ const updateWordStatus = () => {
     document.getElementById("wordStatus").innerHTML = currWordStatus;
 }
 
+// Main function when user clicks and guesses a letter.
 const userGuess = (letter) => {
     guessedLetters.push(letter);
     // Disable the button upon selection
@@ -90,6 +91,7 @@ const userGuess = (letter) => {
     }
 }
 
+// Restarts the game.
 const restart = () => {
     wrongGuesses = 0;
     document.getElementById("wrongGuess").innerHTML = wrongGuesses;
