@@ -62,7 +62,9 @@ export const HangmanScreen = () => {
 
     return (
         <>
-        <Image src={standImage} height={200} width={20}/>
+        <p>
+        <Image src={standImage}/>
+        </p>
         <div> HELLO</div>
         <KeyboardDiv>
             <div>{firstRowKeyboard}</div>
