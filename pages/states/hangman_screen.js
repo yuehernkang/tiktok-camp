@@ -1,6 +1,10 @@
 import Image from "next/image";
+import { useState } from "react";
 import styled from "styled-components";
 import standImage from "../../public/stand.png";
+import { connectFunctionsEmulator, getFunctions , httpsCallable } from "firebase/functions"
+import { firebaseConfig } from "../firebase_config";
+import { getApp } from "firebase/app";
 
 const firstRow = [
     "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"
@@ -31,9 +35,21 @@ const KeyboardDiv = styled.div`
 `;
 
 export const HangmanScreen = () => {
+    
+    const [imageState, setImageState] = useState();
+
+    const submitGuess = (guess) => {
+        const functions = getFunctions(getApp(), 'asia-southeast1');
+        const checkWord = httpsCallable(functions, 'checkWord');
+        console.log(guess);
+        checkWord({ guess: "B", roomId: "2vky", currentWordState: "_PPL_" })
+            .then((result) => {
+                console.log(result);
+            });
+    }
 
     const firstRowKeyboard = firstRow.map((item) => {
-        return <LetterBox>{item}</LetterBox>
+        return <LetterBox onClick={() => submitGuess(item)}>{item}</LetterBox>
     })
     const secondRowKeyboard = secondRow.map((item) => {
         return <LetterBox>{item}</LetterBox>
@@ -43,9 +59,11 @@ export const HangmanScreen = () => {
         return <LetterBox>{item}</LetterBox>
     })
 
+
     return (
         <>
         <Image src={standImage} height={200} width={20}/>
+        <div> HELLO</div>
         <KeyboardDiv>
             <div>{firstRowKeyboard}</div>
             <div>{secondRowKeyboard}</div>
