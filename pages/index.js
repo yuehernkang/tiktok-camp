@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
-import {LobbyScreen} from './states/lobby_screen';
+import { LobbyScreen } from './states/lobby_screen';
 import { LoginScreen } from './states/login_screen';
 import { CREATE_JOIN_ROOM, ENTER_NAME_SCREEN, ENTER_ROOM_STATE, HANGMAN_GAME_STATE, INITIAL_STATE, LOBBY_SCREEN_STATE, LOGIN_SCREEN_STATE } from './states/states';
-import {EnterRoomScreen} from './states/enter_room_screen';
+import { EnterRoomScreen } from './states/enter_room_screen';
 import { useSelector } from 'react-redux';
 import { CreateJoinRoom } from './states/create_join_room';
 import { EnterNameScreen } from './states/enter_name_screen';
