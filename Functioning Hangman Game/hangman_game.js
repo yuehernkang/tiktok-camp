@@ -1,7 +1,8 @@
 // Curated list of words to guess
 const wordArr = ["APPLE", "PEAR", "BANANA", "WATERMELON", "ORANGE", "KIWI",
                 "BLUEBERRY", "GRAPE", "PAPAYA", "LEMON", "CRANBERRY", "HONEYDEW",
-                "MANGO", "RAMBUTAN"];
+                "MANGO", "RAMBUTAN", "STRAWBERRY", "JACKFRUIT", "DURIAN", "PINEAPPLE",
+                "MANGOSTEEN", "RAMBUTAN"];
 
 // Global Variables
 let masterWord = "";
