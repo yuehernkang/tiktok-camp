@@ -31,3 +31,4 @@ yarn-error.log*
 .vercel
 
 /functions/serviceAccountKey.json
+/pages/firebase_config.js

@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-    apiKey: "AIzaSyD37v8CDXRL3afmSoJ-b36dRZ066vdRs9I",
+    apiKey: "AIzaSyDZZEN7oJC1z23WJqiarF9PEonBCPd08rU",
     authDomain: "tiktok-camp.firebaseapp.com",
     databaseURL: "https://tiktok-camp-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "tiktok-camp",

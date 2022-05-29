@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { CREATE_JOIN_ROOM } from "./states";
 import { setName } from "../../features/nameSlice";
 import { setUiState } from "../../features/uiSlice";
+import { useState } from "react";
 
 const PageDiv = styled.div`
     display: grid;
@@ -49,10 +50,18 @@ const CustomSubmitButton = styled.button `
 `;
 
 export const EnterNameScreen = () => {
+    const [nameInput, setNameInput] = useState();
+    const [buttonDisabledState, setButtonDisabledState] = useState(true);
     const disPatch = useDispatch();
     const onPress = () => {
-        disPatch(setName("Hello"))
+        disPatch(setName(nameInput))
         disPatch(setUiState(CREATE_JOIN_ROOM))
+    }
+
+    const handleChange = e => {
+        e.target.value.length > 0? setButtonDisabledState(false):setButtonDisabledState(true)
+        console.log(e.target.value);
+        setNameInput(e.target.value);
     }
 
     return (
@@ -60,8 +69,8 @@ export const EnterNameScreen = () => {
             <Title>Welcome to HangUs.io</Title>
             <Subtitle>Please Enter Your Name</Subtitle>
             <InputDiv>
-                <NameInput/>
-                <CustomSubmitButton disabled={false} onClick={onPress}>ENTER</CustomSubmitButton>
+                <NameInput onChange={handleChange}/>
+                <CustomSubmitButton disabled={buttonDisabledState} onClick={onPress}>ENTER</CustomSubmitButton>
             </InputDiv>
         </PageDiv>
     );

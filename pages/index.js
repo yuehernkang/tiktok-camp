@@ -18,7 +18,6 @@ export default function Home() {
   // const [uiState, setUIState] = useState(INITIAL_STATE);
   const uiState = useSelector((state) => state.ui.value)
   const name = useSelector((state) => state.name)
-  const useless = useSelector((state) => {console.log(state)})
   var renderUi = <></>;
   switch(uiState) {
     case INITIAL_STATE:

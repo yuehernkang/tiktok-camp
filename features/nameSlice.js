@@ -9,7 +9,7 @@ export const nameSlice = createSlice({
     initialState,
     reducers: {
         setName: (state, action) => {
-            state = action.payload
+            state.value = action.payload
         }
     }
 })
