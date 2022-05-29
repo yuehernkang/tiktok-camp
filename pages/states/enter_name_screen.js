@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { CREATE_JOIN_ROOM } from "./states";
 import { setName } from "../../features/nameSlice";
 import { setUiState } from "../../features/uiSlice";
 import { useState } from "react";
+import Constants from "../../app/states";
 
 const PageDiv = styled.div`
     display: grid;
@@ -49,13 +49,14 @@ const CustomSubmitButton = styled.button `
     }
 `;
 
-export const EnterNameScreen = () => {
+const EnterNameScreen = () => {
     const [nameInput, setNameInput] = useState();
     const [buttonDisabledState, setButtonDisabledState] = useState(true);
     const disPatch = useDispatch();
     const onPress = () => {
+        console.log('pressed')
         disPatch(setName(nameInput))
-        disPatch(setUiState(CREATE_JOIN_ROOM))
+        disPatch(setUiState(Constants.CREATE_JOIN_ROOM))
     }
 
     const handleChange = e => {
@@ -70,8 +71,10 @@ export const EnterNameScreen = () => {
             <Subtitle>Please Enter Your Name</Subtitle>
             <InputDiv>
                 <NameInput onChange={handleChange}/>
-                <CustomSubmitButton disabled={buttonDisabledState} onClick={onPress}>ENTER</CustomSubmitButton>
+                <CustomSubmitButton disabled={buttonDisabledState} onClick={() => onPress()}>ENTER</CustomSubmitButton>
             </InputDiv>
         </PageDiv>
     );
 }
+
+export default EnterNameScreen;

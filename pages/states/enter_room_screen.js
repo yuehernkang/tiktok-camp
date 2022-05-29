@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { INITIAL_STATE } from './states';
 
-export const EnterRoomScreen = () => {
+const EnterRoomScreen = () => {
 
     const [inputValue, setinputValue] = useState();
 
@@ -54,3 +53,5 @@ export const EnterRoomScreen = () => {
         </>
     )
 }
+
+export default EnterRoomScreen;

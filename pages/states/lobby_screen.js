@@ -4,13 +4,13 @@ import { getDatabase, onChildAdded, onChildRemoved, onDisconnect,onValue,push,re
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUiState } from '../../features/uiSlice';
-import { HANGMAN_GAME_STATE } from './states';
 import Image from 'next/image';
 import notready from '../../public/notready.png';
 import readyPic from '../../public/ready.png';
 import { Button, IconButton, Snackbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import useToggle from '../../app/hooks';
+import Constants from "../../app/states";
 
 //Steps: 
 //1. Add player to the room in Firebase Database
@@ -65,7 +65,7 @@ const ReadyStateImage = styled(Image)`
     max-width: 100%;
 `;
 
-export const LobbyScreen = () => {
+const LobbyScreen = () => {
     const roomId = useSelector((state) => state.ui.roomId);
     const name = useSelector((state) => state.name.value)
     const hostState = useSelector((state) => state.ui.host);
@@ -122,6 +122,8 @@ export const LobbyScreen = () => {
 
 
     useEffect(() => {
+        //WARM UP 
+
         initNewPlayer(roomId, name);
         if(!hostState){
             const playerId = addPlayer(roomId, name);
@@ -175,7 +177,7 @@ export const LobbyScreen = () => {
                         console.log(v);
                         if(snapshot.toJSON()[v]) {
                             console.log("hello change here pls")
-                            disPatch(setUiState(HANGMAN_GAME_STATE));
+                            disPatch(setUiState(Constants.HANGMAN_GAME_STATE));
                         }
                     }
                     // if(v == name) {
@@ -282,3 +284,5 @@ export const LobbyScreen = () => {
 
     );
 }
+
+export default LobbyScreen;

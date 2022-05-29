@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
-import { firebaseConfig } from './firebase_config';
+import firebaseConfig  from '../app/firebase_config';
 import { getDatabase } from 'firebase/database'; // Firebase v9+
 import { initializeApp } from 'firebase/app';
 

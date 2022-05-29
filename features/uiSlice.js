@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { CREATE_JOIN_ROOM, INITIAL_STATE } from '../pages/states/states';
+import Constants from "../app/states";
 
 const initialState = {
-    value: INITIAL_STATE,
+    value: Constants.INITIAL_STATE,
     roomId: "",
     host: false
 }

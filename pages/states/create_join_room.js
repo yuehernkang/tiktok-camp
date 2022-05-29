@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import styled  from "styled-components";
 import { setHostState, setRoomIdState, setUiState } from "../../features/uiSlice";
 import { createRoom, getRoom } from "../../services/firebase_service";
-import { ENTER_NAME_SCREEN, INITIAL_STATE, LOBBY_SCREEN_STATE } from "./states";
+import Constants from "../../app/states";
 
-export const CreateJoinRoom = () => {
+const CreateJoinRoom = () => {
     const name = useSelector((state) => state.name.value)
     const ui = useSelector((state) => state.ui.state)
     const disPatch = useDispatch();
@@ -23,7 +23,7 @@ export const CreateJoinRoom = () => {
     const makeRoom = () => {
         const roomId = createRoom(name);
         roomId.then((result) => {
-            disPatch(setUiState(LOBBY_SCREEN_STATE))
+            disPatch(setUiState(Constants.LOBBY_SCREEN_STATE))
             disPatch(setRoomIdState(result));
             disPatch(setHostState(true));
         })
@@ -47,7 +47,7 @@ export const CreateJoinRoom = () => {
         get(roomRef).then((snapshot) => {
             if (snapshot.exists()) {
                 disPatch(setRoomIdState(roomIdInput));
-                disPatch(setUiState(LOBBY_SCREEN_STATE))
+                disPatch(setUiState(Constants.LOBBY_SCREEN_STATE))
                 console.log(snapshot.val());
               } else {
                 setShowErrorMessageState(true);
@@ -134,3 +134,5 @@ export const CreateJoinRoom = () => {
 
     );
 }
+
+export default CreateJoinRoom;

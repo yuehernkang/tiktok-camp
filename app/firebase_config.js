@@ -1,5 +1,5 @@
-export const firebaseConfig = {
-    apiKey: "AIzaSyDZZEN7oJC1z23WJqiarF9PEonBCPd08rU",
+const firebaseConfig = {
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "tiktok-camp.firebaseapp.com",
     databaseURL: "https://tiktok-camp-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "tiktok-camp",
@@ -9,3 +9,5 @@ export const firebaseConfig = {
     measurementId: "G-LTP0TMK8WZ"
   };
   
+
+  export default firebaseConfig;

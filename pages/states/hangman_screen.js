@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import standImage from "../../public/stand.png";
 import { connectFunctionsEmulator, getFunctions , httpsCallable } from "firebase/functions"
-import { firebaseConfig } from "../firebase_config";
+import firebaseConfig from "../../app/firebase_config";
 import { getApp } from "firebase/app";
 import { useDispatch, useSelector } from "react-redux";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { Box, Button, Input, Modal, TextField, Typography } from "@mui/material";
 import { setUiState } from "../../features/uiSlice";
-import { LOBBY_SCREEN_STATE } from "./states";
+import Constants from "../../app/states";
 
 const firstRow = [
     "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"
@@ -62,7 +62,7 @@ const UserLifeDiv = styled.div`
     font-size: xx-large;
 `;
 
-export const HangmanScreen = () => {
+const HangmanScreen = () => {
     const [imageState, setImageState] = useState();
     const [wordState, setWordState] = useState();
     const [keyboardDisable, setkeyboardDisable] = useState(false);
@@ -142,21 +142,21 @@ export const HangmanScreen = () => {
 
     const firstRowKeyboard = firstRow.map((item) => {
         const disabledState = chosenLetters.includes(item) ? true : keyboardDisable;
-        return <LetterBox disabled={disabledState} onClick={() => submitGuess(item)}>{item}</LetterBox>
+        return <LetterBox disabled={disabledState} onClick={() => submitGuess(item)} key={item}>{item}</LetterBox>
     })
     const secondRowKeyboard = secondRow.map((item) => {
         const disabledState = chosenLetters.includes(item) ? true : keyboardDisable;
-        return <LetterBox disabled={disabledState} onClick={() => submitGuess(item)}>{item}</LetterBox>
+        return <LetterBox disabled={disabledState} onClick={() => submitGuess(item)}key={item}>{item}</LetterBox>
     })
 
     const thirdRowKeyboard = thirdRow.map((item) => {
         const disabledState = chosenLetters.includes(item) ? true : keyboardDisable;
-        return <LetterBox disabled={disabledState}onClick={() => submitGuess(item)}>{item}</LetterBox>
+        return <LetterBox disabled={disabledState}onClick={() => submitGuess(item)}key={item}>{item}</LetterBox>
     })
 
     const backToLobby = () => {
         setOpen(false);
-        disPatch(setUiState(LOBBY_SCREEN_STATE));
+        disPatch(setUiState(Constants.LOBBY_SCREEN_STATE));
     }
 
 
@@ -175,7 +175,7 @@ export const HangmanScreen = () => {
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     {won ? "WINNER !!" : "YOU LOST!!"}
                     <div>
-                        <Button variant="contained" size="medium" onClick={() => disPatch(setUiState(LOBBY_SCREEN_STATE))}>Back to Lobby</Button>
+                        <Button variant="contained" size="medium" onClick={() => disPatch(setUiState(Constants.LOBBY_SCREEN_STATE))}>Back to Lobby</Button>
                     </div>
                 </Typography>
                 </Box>
@@ -191,3 +191,5 @@ export const HangmanScreen = () => {
         </>
     )
 }
+
+export default HangmanScreen;
